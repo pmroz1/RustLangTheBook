@@ -1,0 +1,30 @@
+# Ignore Cargo build output
+/target/
+
+# Ignore backup files
+**/*.rs.bk
+
+# Ignore compiled artifacts
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Ignore generated dependency files (if any)
+dep/
+
+# Editor directories
+.idea/
+.vscode/
+
+# Log files
+*.log
+
+# # Ignore lock files
+# Cargo.lock
+
+# Ignore the output of the build script
+build.rs.bk
+
+# Ignore target directories
+**/target/
