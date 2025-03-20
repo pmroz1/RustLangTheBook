@@ -16,15 +16,26 @@ fn main() {
     // } // Here, x goes out of scope, then s. But because s's value was moved, nothing
     // special happens.
 
+    ///////////////////////////
+
     // giving ownership and then taking it back
 
-    let g1 = gives_ownership(); // gives_ownership moves its return
+    let _g1 = gives_ownership(); // gives_ownership moves its return
                                 // value into g1
     let tmp_string = String::from("hello");
 
-    let g2 = takes_and_gives_back(tmp_string); // tmp_string is moved into
+    let _g2 = takes_and_gives_back(tmp_string); // tmp_string is moved into
                                                // takes_and_gives_back, which also
                                                // moves its return value into g2
+
+    ///////////////////////////
+    
+    // transferring ownership of return values
+
+    let t1 = String::from("hello");
+    let (t2, len) = calculate_length(t1);
+
+    println!("The length of '{t2}' is {len}");
 }
 
 fn takes_ownership(some_string: String) {
@@ -46,4 +57,9 @@ fn gives_ownership() -> String {
 fn takes_and_gives_back(a_string: String) -> String {
     // a_string comes into scope
     a_string // a_string is returned and moves out to the calling function
+}
+
+fn calculate_length(s: String) -> (String, usize){
+    let length = s.len(); // len() returns the length of a String
+    (s, length)
 }
